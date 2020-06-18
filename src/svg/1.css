@@ -1,0 +1,217 @@
+*,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    body {
+        background: none;
+        font: 14px/1 'Open Sans', helvetica, sans-serif;
+        font-weight: bold;
+        -webkit-font-smoothing: antialiased;
+    }
+    .container{
+        height: 500px;
+        width: 500px;
+        position: relative;
+    }
+    #time_graph_canvas{
+        position: absolute;
+        left: 0px;
+        top: 0px;
+    }
+    #loader-container {
+        position: absolute;
+        top: -0.1%;
+        left: 9.8%;
+        margin-top: -140px;/*half the height of the loader*/
+        margin-left: -120px;/*half the width of the loader*/
+        text-align: center;
+        z-index: 3000;
+        /*
+        -webkit-transform: translate(0, 25%);
+          transform: translate(0, 25%);
+*/
+    }
+    .loader-box {
+        margin: 0 auto;
+        height: 133px;
+        width: 133px;
+        position: fixed;
+        /*
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);*/
+        background: #ACC9DA;
+        /* 球的背景颜色 */
+/*        border: 12px solid #666;*/
+        /*I ADDED THIS*/
+        border-radius: 100%;
+        overflow: hidden;
+        z-index: 3000;
+    }
+
+    .loader-box .percent {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        display: -webkit-flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 64px;
+    }
+
+    .loader-box .water {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        -webkit-transform: translate(0, 100%);
+        transform: translate(0, 100%);
+        /* background: red; */
+        background-image: linear-gradient(#E0EFF3, #2693CF);
+        /* 波浪下面的 */
+    }
+
+    .loader-box .water_wave {
+        width: 200%;
+        position: absolute;
+        bottom: 100%;
+    }
+
+    .loader-box .water_wave_back {
+        right: 0;
+        /* background-image: linear-gradient(#E0EFF3, #BDD1DD); */
+        fill: #E0EFF3;
+        /* 波浪back方向的 */
+        margin-bottom: -10px;
+        -webkit-animation: wave-back 2.8s infinite linear;
+        animation: wave-back 2.8s infinite linear;
+    }
+
+    .loader-box .water_wave_front {
+        left: 0;
+        /* background-image: linear-gradient(#E0EFF3, #BDD1DD); */
+        fill: #D6E9F2;
+        /* 波浪front方向的 */
+        margin-bottom: -10px;
+        -webkit-animation: wave-front 2.1s infinite linear;
+        animation: wave-front 2.1s infinite linear;
+    }
+
+    @-webkit-keyframes wave-front {
+        100% {
+            -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+            -ms-transform: translate(-50%, 0);;
+            -moz-transform: translate(-50%, 0);;
+        }
+    }
+
+    @keyframes wave-front {
+        100% {
+            -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+            -ms-transform: translate(-50%, 0);;
+            -moz-transform: translate(-50%, 0);;
+        }
+    }
+
+    @-webkit-keyframes wave-back {
+        100% {
+            -webkit-transform: translate(50%, 0);
+            transform: translate(50%, 0);
+            -ms-transform: translate(50%, 0);;
+            -moz-transform: translate(50%, 0);;
+        }
+    }
+
+    @keyframes wave-back {
+        100% {
+            -webkit-transform: translate(50%, 0);
+            transform: translate(50%, 0);
+        }
+    }
+
+
+    /* ===================== */
+
+    /* === ROTATING TEXT === */
+
+    /* ===================== */
+  .spinny-wrapper{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    
+  }
+.spinny-words{
+    display: inline-block;
+/*    min-width: 350px;*/
+    text-align: center;
+        position: relative;
+    width: 100%;
+/*    margin: 20px 0 0 -130px;*/
+    margin: 20px 0 0 0;
+    text-align: center;
+    font-size: 20px;
+    color:#666;
+}
+.spinny-words p{
+    position: absolute;
+    font-weight: bold;
+    top:-0px;
+    opacity: 0;    
+    animation: rotateWord 10s linear infinite 0s;
+        text-align: center;
+    width: 100%;
+}
+.spinny-words p:nth-child(2) { 
+    animation-delay: 2s; 
+}
+.spinny-words p:nth-child(3) { 
+    animation-delay: 4s; 
+}
+.spinny-words p:nth-child(4) { 
+    animation-delay: 6s; 
+}
+.spinny-words p:nth-child(5) { 
+    animation-delay: 8s; 
+}
+.spinny-words p:nth-child(6) { 
+    animation-delay: 10s; 
+}
+@keyframes rotateWord {
+  0%   { opacity: 0; }
+  2%   { opacity: 0; transform: translateY(-30px); }
+  5%   { opacity: 1; transform: translateY(0px);}
+  17%  { opacity: 1; transform: translateY(0px); }
+  20%  { opacity: 0; transform: translateY(30px); }
+  80%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+    
+/* ======================================== */
+/* ========== IE SPECIFIC STYLES ========== */
+/* ======================================== */
+    
+    
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+/* IE10+ CSS styles go here */
+        #wave {display:none;}
+}    
+    
+/* ======================================== */
+/* ======================================== */
+/* ======================================== */
